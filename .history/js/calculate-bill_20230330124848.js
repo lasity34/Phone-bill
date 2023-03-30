@@ -11,34 +11,26 @@ const billStringElement = document.querySelector(".billString")
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element
 function calculateBtnClicked () {
 
-    const billString = billStringElement.value
-    
+    const
+
     let billTotal = 0;
-    const billItems = billString.split(",");
+    const feeType = str.split(",");
     
-    for (let i = 0; i < billItems.length; i++) {
-        const loopedBill = billItems[i]
+    for (let i = 0; i < feeType.length; i++) {
+        const loopedFees = feeType[i]
         
-      if (loopedBill.includes("sms")) {
-          billTotal += 0.75;
-      } else if(loopedBill.includes("call")) {
-          billTotal += 2.75;
+      if (loopedFees.includes("sms")) {
+          totalBill += 0.65;
+      } else if(loopedFees.includes("call")) {
+          totalBill += 2.75;
       }
     }
-        billTotalElement.classList.remove("warning")
-        billTotalElement.classList.remove("danger")
-
-    if ( billTotal > 20 && billTotal < 30) {
-        billTotalElement.classList.add("warning")
-    } else if ( billTotal > 30) {
-        billTotalElement.classList.add("danger")
-    }
     
-   const roundedTotalBill = billTotal.toFixed(2);
-    billTotalElement.innerHTML = roundedTotalBill
-  return `R${roundedTotalBill}`
+   const wholeNum = totalBill.toFixed(2);
+  
+  return `R${wholeNum}`
 
 }
 //link the function to a click event on the calculate button
 
-    calculateBtnElement.addEventListener("click", calculateBtnClicked)
+    calculateBtnElement.addEventListener("click", calculateBtnClicked())

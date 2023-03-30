@@ -12,7 +12,7 @@ const billStringElement = document.querySelector(".billString")
 function calculateBtnClicked () {
 
     const billString = billStringElement.value
-    
+
     let billTotal = 0;
     const billItems = billString.split(",");
     
@@ -25,13 +25,11 @@ function calculateBtnClicked () {
           billTotal += 2.75;
       }
     }
-        billTotalElement.classList.remove("warning")
-        billTotalElement.classList.remove("danger")
 
-    if ( billTotal > 20 && billTotal < 30) {
-        billTotalElement.classList.add("warning")
-    } else if ( billTotal > 30) {
-        billTotalElement.classList.add("danger")
+    if (billTotal > 20) {
+        billTotalElement.classList.toggle("warning")
+    } else if (billTotal > 30) {
+        billTotalElement.classList.toggle("danger")
     }
     
    const roundedTotalBill = billTotal.toFixed(2);
@@ -41,4 +39,4 @@ function calculateBtnClicked () {
 }
 //link the function to a click event on the calculate button
 
-    calculateBtnElement.addEventListener("click", calculateBtnClicked)
+    calculateBtnElement.addEventListener("click", calculateBtnClicked())

@@ -12,7 +12,7 @@ const billStringElement = document.querySelector(".billString")
 function calculateBtnClicked () {
 
     const billString = billStringElement.value
-    
+    console.log(billString)
     let billTotal = 0;
     const billItems = billString.split(",");
     
@@ -28,9 +28,9 @@ function calculateBtnClicked () {
         billTotalElement.classList.remove("warning")
         billTotalElement.classList.remove("danger")
 
-    if ( billTotal > 20 && billTotal < 30) {
+    if (billTotal > 20) {
         billTotalElement.classList.add("warning")
-    } else if ( billTotal > 30) {
+    } else if (billTotal > 30) {
         billTotalElement.classList.add("danger")
     }
     

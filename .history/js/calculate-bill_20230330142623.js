@@ -12,7 +12,7 @@ const billStringElement = document.querySelector(".billString")
 function calculateBtnClicked () {
 
     const billString = billStringElement.value
-    
+    console.log(billString)
     let billTotal = 0;
     const billItems = billString.split(",");
     
