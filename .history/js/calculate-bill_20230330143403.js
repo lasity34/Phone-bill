@@ -15,7 +15,7 @@ function calculateBtnClicked () {
     
     let billTotal = 0;
     const billItems = billString.split(",");
-   
+    console.log(billItems)
     for (let i = 0; i < billItems.length; i++) {
         const loopedBill = billItems[i]
         
@@ -25,15 +25,13 @@ function calculateBtnClicked () {
           billTotal += 2.75;
       }
     }
-       
+        billTotalElement.classList.remove("warning")
+        billTotalElement.classList.remove("danger")
 
     if ( billTotal > 20 && billTotal < 30) {
         billTotalElement.classList.add("warning")
     } else if ( billTotal > 30) {
         billTotalElement.classList.add("danger")
-    } else {
-        billTotalElement.classList.remove("warning")
-        billTotalElement.classList.remove("danger")
     }
     
    const roundedTotalBill = billTotal.toFixed(2);
