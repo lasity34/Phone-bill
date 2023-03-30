@@ -30,10 +30,10 @@ function calculateBtnClicked () {
     billTotalElement.classList.remove("danger")
        
 
-    if ( billTotal > 30 ) {
-        billTotalElement.classList.add("danger")
-    } else if ( billTotal > 20) {
+    if ( billTotal > 20 ) {
         billTotalElement.classList.add("warning")
+    } else if ( billTotal > 30) {
+        billTotalElement.classList.add("danger")
     }
     
    const roundedTotalBill = billTotal.toFixed(2);

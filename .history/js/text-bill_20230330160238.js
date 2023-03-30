@@ -19,12 +19,10 @@ const smsTotalElem = document.querySelector(".smsTotalOne")
 const totalElem = document.querySelector(".totalOne")
 
 
-let callsTotal = 0;
-let smsTotal = 0;
-
 function textBillTotal() {
 
- 
+    const callsTotal = 0;
+    const smsTotal = 0;
 
     const billTypeEntered = billTypeText.value.trim();
 
@@ -34,18 +32,8 @@ function textBillTotal() {
         smsTotal += 0.75
     }
 
-    callsTotalElem.innerHTML = callsTotal.toFixed(2)
-    smsTotalElem.innerHTML = smsTotal.toFixed(2)
-    const total = callsTotal + smsTotal
-    totalElem.innerHTML = total.toFixed(2)
+    callsTotalElem.innerHTML = callsTotal
 
-
-
-    if (total > 50) {
-        totalElem.classList.add("danger")
-    } else if (total > 30) {
-        totalElem.classList.add("warning")
-    }
 }
 
 

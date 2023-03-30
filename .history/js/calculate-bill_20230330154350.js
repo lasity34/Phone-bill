@@ -25,15 +25,15 @@ function calculateBtnClicked () {
           billTotal += 2.75;
       }
     }
-
-    billTotalElement.classList.remove("warning")
-    billTotalElement.classList.remove("danger")
        
 
-    if ( billTotal > 30 ) {
-        billTotalElement.classList.add("danger")
-    } else if ( billTotal > 20) {
+    if ( billTotal > 20 ) {
         billTotalElement.classList.add("warning")
+    } else if ( billTotal > 30) {
+        billTotalElement.classList.add("danger")
+    } else {
+        billTotalElement.classList.remove("warning")
+        billTotalElement.classList.remove("danger")
     }
     
    const roundedTotalBill = billTotal.toFixed(2);
