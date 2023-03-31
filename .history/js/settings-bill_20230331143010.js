@@ -57,7 +57,7 @@ let criticalValue = '';
     }
 
     
-   
+    console.log(typeof callValue)
 
 
     function totalBillWithSettings () {

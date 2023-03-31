@@ -46,24 +46,22 @@ let callSettingTotal = 0
 let callValue = 2.75;
 let smsValue = 0.75;
 let warningValue = '';
-let criticalValue = '';
+let cricitcalValue = '';
 
 
-    function updatedSettings() {
-        callValue = parseInt(callCostSettingEl.value )
-        smsValue = parseInt( smsCostSettingEl.value) ;
-        warningValue = warningSettingEl.value ; 
-        criticalValue = criticalLevelSettingEl.value ;
-    }
 
     
-   
+    
 
 
     function totalBillWithSettings () {
 
         const checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked")
 
+        callValue = callCostSettingEl.value ;
+        smsValue = smsCostSettingEl.value ;
+        warningValue = warningSettingEl.value ; 
+        cricitcalValue = criticalLevelSettingEl.value ;
         
 
 
@@ -77,8 +75,7 @@ let criticalValue = '';
             }
         }
 
-        console.log(typeof callSettingTotal)
-        calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2)
+        calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2);
         smsTotalSettingsElement.innerHTML = smsSettingTotal.toFixed(2);
         const totalBill = callSettingTotal + smsSettingTotal;
         totalBillSettingsElement.innerHTML = totalBill.toFixed(2)
@@ -88,5 +85,5 @@ let criticalValue = '';
 
     }
 
-    updateBtnSettingElement.addEventListener("click", updatedSettings)
+    updateBtnSettingElement.addEventListener("click", totalBillSettingsElement)
     addBtnSettingElement.addEventListener("click", totalBillWithSettings)

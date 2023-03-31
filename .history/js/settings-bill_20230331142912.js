@@ -57,7 +57,7 @@ let criticalValue = '';
     }
 
     
-   
+    console.log(typeof callValue)
 
 
     function totalBillWithSettings () {
@@ -81,7 +81,7 @@ let criticalValue = '';
         calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2)
         smsTotalSettingsElement.innerHTML = smsSettingTotal.toFixed(2);
         const totalBill = callSettingTotal + smsSettingTotal;
-        totalBillSettingsElement.innerHTML = totalBill.toFixed(2)
+        totalBillSettingsElement.innerHTML = totalBill
 
       
 

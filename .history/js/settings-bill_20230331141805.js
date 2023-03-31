@@ -50,14 +50,14 @@ let criticalValue = '';
 
 
     function updatedSettings() {
-        callValue = parseInt(callCostSettingEl.value )
-        smsValue = parseInt( smsCostSettingEl.value) ;
+        callValue = callCostSettingEl.value ;
+        smsValue = smsCostSettingEl.value ;
         warningValue = warningSettingEl.value ; 
         criticalValue = criticalLevelSettingEl.value ;
     }
 
     
-   
+    console.log(callValue)
 
 
     function totalBillWithSettings () {
@@ -77,8 +77,7 @@ let criticalValue = '';
             }
         }
 
-        console.log(typeof callSettingTotal)
-        calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2)
+        calltotalSettingsElement.innerHTML = callSettingTotal
         smsTotalSettingsElement.innerHTML = smsSettingTotal.toFixed(2);
         const totalBill = callSettingTotal + smsSettingTotal;
         totalBillSettingsElement.innerHTML = totalBill.toFixed(2)
