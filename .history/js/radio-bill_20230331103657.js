@@ -21,7 +21,7 @@ const totalTwoElement = document.querySelector(".totalTwo")
 
 let smsTotalRadio = 0;
 let callTotalRadio = 0;
-
+console.log(checkedRadioBtnElement.value)
     function calculateRadioBtn () {
 
         const checkedRadioBtnElement = document.querySelector("input[name='billItemType']:checked") 
@@ -35,7 +35,7 @@ let callTotalRadio = 0;
                 smsTotalRadio += 0.75
             }
 
-           
+            console.log(billItemType)
         }
       
       

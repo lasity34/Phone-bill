@@ -13,7 +13,7 @@
 
 
 const radioBillAddBtnElement = document.querySelector(".radioBillAddBtn")
-
+const checkedRadioBtnElement = document.querySelector("input[name='billItemType']:checked") 
 // "input[name='billItemType']:checked"
 const callTotalTwoElement = document.querySelector(".callTotalTwo") 
 const smsTotalTwoElement = document.querySelector(".smsTotalTwo")
@@ -24,7 +24,7 @@ let callTotalRadio = 0;
 
     function calculateRadioBtn () {
 
-        const checkedRadioBtnElement = document.querySelector("input[name='billItemType']:checked") 
+        
         
         if(checkedRadioBtnElement) {
           const  billItemType = checkedRadioBtnElement.value;
@@ -35,7 +35,7 @@ let callTotalRadio = 0;
                 smsTotalRadio += 0.75
             }
 
-           
+            console.log(billItemType)
         }
       
       

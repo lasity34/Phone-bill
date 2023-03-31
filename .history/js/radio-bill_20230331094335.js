@@ -11,9 +11,9 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
-
+const billItemElement = document.querySelector(".billItemTypeRadio")
 const radioBillAddBtnElement = document.querySelector(".radioBillAddBtn")
-
+const checkedRadioBtnElement = document.querySelector("input[name='billItemType']:checked") 
 // "input[name='billItemType']:checked"
 const callTotalTwoElement = document.querySelector(".callTotalTwo") 
 const smsTotalTwoElement = document.querySelector(".smsTotalTwo")
@@ -24,37 +24,25 @@ let callTotalRadio = 0;
 
     function calculateRadioBtn () {
 
-        const checkedRadioBtnElement = document.querySelector("input[name='billItemType']:checked") 
         
+        let billItemType;
         if(checkedRadioBtnElement) {
-          const  billItemType = checkedRadioBtnElement.value;
-
-            if (billItemType === "call") {
-                callTotalRadio += 2.75
-            } else if (billItemType === "sms") {
-                smsTotalRadio += 0.75
-            }
-
-           
+            billItemType = checkedRadioBtnElement.value;
         }
-      
-      
+        console.log(billItemType)
+        if (billItemType === "call") {
+            callTotalRadio += 2.75
+        } else if (billItemType === "sms") {
+            smsTotalRadio += 0.75
+        }
 
 
-        smsTotalTwoElement.innerHTML = smsTotalRadio.toFixed(2);
-        callTotalTwoElement.innerHTML = callTotalRadio.toFixed(2);
+        smsTotalTwoElement.innerHTML = smsTotalRadio;
+        callTotalTwoElement.innerHTML = callTotalRadio;
         const totalBill = callTotalRadio + smsTotalRadio;
-        totalTwoElement.innerHTML = totalBill.toFixed(2)
-
-        totalTwoElement.classList.remove("danger")
-        totalTwoElement.classList.remove("warning")
-
+        totalTwoElement.innerHTML = totalBill
     
-        if(totalBill > 30) {
-            totalTwoElement.classList.add("danger")
-        } else if (totalBill > 20) {
-            totalTwoElement.classList.add("warning")
-        }
+
 
     } 
 

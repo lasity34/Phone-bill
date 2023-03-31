@@ -35,7 +35,7 @@ let callTotalRadio = 0;
                 smsTotalRadio += 0.75
             }
 
-           
+            console.log(billItemType)
         }
       
       
