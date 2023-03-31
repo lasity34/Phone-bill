@@ -10,3 +10,11 @@
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
+
+const billItemElement = document.querySelector(".billItemTypeRadio")
+const radioBillAddBtnElement = document.querySelector(".radioBillAddBtn")
+const callTotalTwoElement = document.querySelector(".callTotalTwo")
+const smsTotalTwoElement = document.querySelector(".smsTotalTwo")
+const totalTwoElement = document.querySelector(".totalTwo")
+
+
