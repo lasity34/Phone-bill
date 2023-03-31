@@ -77,9 +77,9 @@ function totalBillWithSettings() {
   totalBillSettingsElement.classList.remove("danger")
   totalBillSettingsElement.classList.remove("warning")
 
-  if (totalBill >= criticalValue) {
+  if (totalBill > criticalValue) {
         totalBillSettingsElement.classList.add("danger")
-  } else if (totalBill >= warningValue) {
+  } else if (totalBill > warningValue) {
         totalBillSettingsElement.classList.add("warning")
   }
 }

@@ -49,8 +49,8 @@ let criticalValue = "";
 function updatedSettings() {
   callValue = parseInt(callCostSettingEl.value);
   smsValue = parseInt(smsCostSettingEl.value);
-  warningValue = parseInt(warningSettingEl.value);
-  criticalValue = parseInt(criticalLevelSettingEl.value)
+  warningValue = warningSettingEl.value;
+  criticalValue = criticalLevelSettingEl.value;
 }
 
 function totalBillWithSettings() {
@@ -68,20 +68,11 @@ function totalBillWithSettings() {
     }
   }
 
-
+  console.log(typeof callSettingTotal);
   calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2);
   smsTotalSettingsElement.innerHTML = smsSettingTotal.toFixed(2);
   const totalBill = callSettingTotal + smsSettingTotal;
   totalBillSettingsElement.innerHTML = totalBill.toFixed(2);
-
-  totalBillSettingsElement.classList.remove("danger")
-  totalBillSettingsElement.classList.remove("warning")
-
-  if (totalBill >= criticalValue) {
-        totalBillSettingsElement.classList.add("danger")
-  } else if (totalBill >= warningValue) {
-        totalBillSettingsElement.classList.add("warning")
-  }
 }
 
 updateBtnSettingElement.addEventListener("click", updatedSettings);

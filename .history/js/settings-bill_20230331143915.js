@@ -74,14 +74,8 @@ function totalBillWithSettings() {
   const totalBill = callSettingTotal + smsSettingTotal;
   totalBillSettingsElement.innerHTML = totalBill.toFixed(2);
 
-  totalBillSettingsElement.classList.remove("danger")
-  totalBillSettingsElement.classList.remove("warning")
 
-  if (totalBill >= criticalValue) {
-        totalBillSettingsElement.classList.add("danger")
-  } else if (totalBill >= warningValue) {
-        totalBillSettingsElement.classList.add("warning")
-  }
+  if (totalBill > )
 }
 
 updateBtnSettingElement.addEventListener("click", updatedSettings);
