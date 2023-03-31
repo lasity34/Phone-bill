@@ -31,58 +31,25 @@ const totalBillSettingsElement = document.querySelector(".totalSettings");
 const addBtnSettingElement = document.querySelector(".addBtnSetting");
 const updateBtnSettingElement = document.querySelector(".updateSettings");
 
-// settings element
+// settings
 const callCostSettingEl = document.querySelector(".callCostSetting")
 const smsCostSettingEl = document.querySelector(".smsCostSetting")
 const warningSettingEl = document.querySelector(".warningLevelSetting")
 const criticalLevelSettingEl = document.querySelector(".criticalLevelSetting")
 
-// totals
+
 let smsSettingTotal = 0;
 let callSettingTotal = 0
-
-
-// settings updated
-let callValue = 2.75;
-let smsValue = 0.75;
-let warningValue = '';
-let cricitcalValue = '';
-
-    function updatedSettings() {
-        callValue = callCostSettingEl.value ;
-        smsValue = smsCostSettingEl.value ;
-        warningValue = warningSettingEl.value ; 
-        cricitcalValue = criticalLevelSettingEl.value ;
-    }
-
-
 
     function totalBillWithSettings () {
 
         const checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked")
 
-        
-
-
         if (checkedRadioBtn) {
-            const billItemType = checkedRadioBtn.value;
+            const billItemType = checkedRadioBtn.value
 
             if (billItemType === "call") {
-                callSettingTotal += callValue;
-            } else if(billItemType === "sms") {
-                smsSettingTotal += smsValue;
+
             }
         }
-
-        calltotalSettingsElement.innerHTML = callSettingTotal.toFixed(2);
-        smsTotalSettingsElement.innerHTML = smsSettingTotal.toFixed(2);
-        const totalBill = callSettingTotal + smsSettingTotal;
-        totalBillSettingsElement.innerHTML = totalBill.toFixed(2)
-
-      
-
-
     }
-
-    updateBtnSettingElement.addEventListener("click", updatedSettings)
-    addBtnSettingElement.addEventListener("click", totalBillWithSettings)

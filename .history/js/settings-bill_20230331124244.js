@@ -43,16 +43,16 @@ let callSettingTotal = 0
 
 
 // settings updated
-let callValue = 2.75;
-let smsValue = 0.75;
-let warningValue = '';
-let cricitcalValue = '';
+let callValue
+let smsValue 
+let warningValue
+let cricitcalValue 
 
     function updatedSettings() {
-        callValue = callCostSettingEl.value ;
-        smsValue = smsCostSettingEl.value ;
-        warningValue = warningSettingEl.value ; 
-        cricitcalValue = criticalLevelSettingEl.value ;
+        callValue = callCostSettingEl.value || 2.75;
+        smsValue = smsCostSettingEl.value || 0.75;
+        warningValue = warningSettingEl.value || ''; 
+        cricitcalValue = criticalLevelSettingEl.value || '';
     }
 
 
@@ -84,5 +84,5 @@ let cricitcalValue = '';
 
     }
 
-    updateBtnSettingElement.addEventListener("click", updatedSettings)
+
     addBtnSettingElement.addEventListener("click", totalBillWithSettings)

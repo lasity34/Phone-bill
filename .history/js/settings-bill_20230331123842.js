@@ -43,23 +43,18 @@ let callSettingTotal = 0
 
 
 // settings updated
-let callValue = 2.75;
-let smsValue = 0.75;
-let warningValue = '';
-let cricitcalValue = '';
-
-    function updatedSettings() {
-        callValue = callCostSettingEl.value ;
-        smsValue = smsCostSettingEl.value ;
-        warningValue = warningSettingEl.value ; 
-        cricitcalValue = criticalLevelSettingEl.value ;
-    }
-
+const callSettingUpdated = callCostSettingEl.value || 2.75;
+const smsSettingUpdated = smsCostSettingEl.value || 0.75;
+const warningUpdate = warningSettingEl.value; 
+const cricitcalUpdatte = criticalLevelSettingEl.value;
 
 
     function totalBillWithSettings () {
 
         const checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked")
+
+        let callValue = 2.75;
+        let smsValue = 0.75;
 
         
 
@@ -84,5 +79,5 @@ let cricitcalValue = '';
 
     }
 
-    updateBtnSettingElement.addEventListener("click", updatedSettings)
+
     addBtnSettingElement.addEventListener("click", totalBillWithSettings)
