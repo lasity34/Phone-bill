@@ -53,8 +53,6 @@ function removeTotal() {
     totalElem.innerHTML = 0
     callsTotalElem.innerHTML = 0
     smsTotalElem.innerHTML = 0
-    callsTotal = 0
-    smsTotal = 0
 }
 
 

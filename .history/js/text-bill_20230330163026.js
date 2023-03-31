@@ -14,7 +14,7 @@
 
 const billTypeText = document.querySelector(".billTypeText")
 const textTotalAddBtn = document.querySelector(".addToBillBtn")
-const textTotalRemoveBtn = document.querySelector(".resetBtn")
+const textTotslRemoveBtn = document.querySelector(".resetBtn")
 const callsTotalElem = document.querySelector(".callTotalOne")
 const smsTotalElem = document.querySelector(".smsTotalOne")
 const totalElem = document.querySelector(".totalOne")
@@ -49,14 +49,5 @@ function textBillTotal() {
     }
 }
 
-function removeTotal() {
-    totalElem.innerHTML = 0
-    callsTotalElem.innerHTML = 0
-    smsTotalElem.innerHTML = 0
-    callsTotal = 0
-    smsTotal = 0
-}
-
 
  textTotalAddBtn.addEventListener("click", textBillTotal)
-textTotalRemoveBtn.addEventListener("click", removeTotal)
