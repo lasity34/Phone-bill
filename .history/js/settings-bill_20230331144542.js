@@ -43,11 +43,11 @@ let callSettingTotal = 0;
 // settings updated
 let callValue = 2.75;
 let smsValue = 0.75;
-let warningValue = 30;
-let criticalValue = 50;
+let warningValue = 0;
+let criticalValue = 0;
 
 function updatedSettings() {
-  callValue = parseInt(callCostSettingEl.value);
+  callValue = callCostSettingEl.value;
   smsValue = parseInt(smsCostSettingEl.value);
   warningValue = parseInt(warningSettingEl.value);
   criticalValue = parseInt(criticalLevelSettingEl.value)
