@@ -41,27 +41,16 @@ let smsSettingTotal = 0;
 let callSettingTotal = 0;
 
 // settings updated
-let callValue = 0;
-let smsValue = 0;
-let warningValue = 0;
-let criticalValue = 0;
-let totalBill = 0
-
+let callValue = 2.75;
+let smsValue = 0.75;
+let warningValue = 30;
+let criticalValue = 50;
+let totalBill;
 function updatedSettings() {
-  callValue = parseInt(callCostSettingEl.value) || 0 ;
+  callValue = parseInt(callCostSettingEl.value);
   smsValue = parseInt(smsCostSettingEl.value);
   warningValue = parseInt(warningSettingEl.value);
   criticalValue = parseInt(criticalLevelSettingEl.value)
-  totalBillSettingsElement.classList.remove("danger")
-  totalBillSettingsElement.classList.remove("warning")
-
-  if (totalBill >= criticalValue) {
-    totalBillSettingsElement.classList.add("danger")
-} else if (totalBill >= warningValue) {
-    totalBillSettingsElement.classList.add("warning")
-}
-
-
 }
 
 function totalBillWithSettings() {
@@ -72,15 +61,12 @@ function totalBillWithSettings() {
   if (checkedRadioBtn) {
     const billItemType = checkedRadioBtn.value;
 
-    if(totalBill < criticalValue ) {
-
-        if (billItemType === "call") {
-            callSettingTotal += callValue;
-          } else if (billItemType === "sms") {
-            smsSettingTotal += smsValue;
-          }
+    if()
+    if (billItemType === "call") {
+      callSettingTotal += callValue;
+    } else if (billItemType === "sms") {
+      smsSettingTotal += smsValue;
     }
-   
   }
 
 

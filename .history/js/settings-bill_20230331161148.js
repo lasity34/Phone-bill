@@ -45,23 +45,13 @@ let callValue = 0;
 let smsValue = 0;
 let warningValue = 0;
 let criticalValue = 0;
-let totalBill = 0
+let totalBill;
 
 function updatedSettings() {
-  callValue = parseInt(callCostSettingEl.value) || 0 ;
+  callValue = parseInt(callCostSettingEl.value);
   smsValue = parseInt(smsCostSettingEl.value);
   warningValue = parseInt(warningSettingEl.value);
   criticalValue = parseInt(criticalLevelSettingEl.value)
-  totalBillSettingsElement.classList.remove("danger")
-  totalBillSettingsElement.classList.remove("warning")
-
-  if (totalBill >= criticalValue) {
-    totalBillSettingsElement.classList.add("danger")
-} else if (totalBill >= warningValue) {
-    totalBillSettingsElement.classList.add("warning")
-}
-
-
 }
 
 function totalBillWithSettings() {
