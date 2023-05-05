@@ -89,7 +89,7 @@ function removeTotal() {
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);
 
-
+/
 //   const userDataHTML = userTemplate(userData);
 //   userDataElem.innerHTML = userDataHTML;
 

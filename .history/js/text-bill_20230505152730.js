@@ -21,7 +21,20 @@ const totalElem = document.querySelector(".totalOne");
 let callsTotal = 0;
 let smsTotal = 0;
 
+document.addEventListener("DOMContentLoaded", function () {
+  const templateSource = document.querySelector(".userTemplate").innerHTML;
 
+  const userTemplate = Handlebars.compile(templateSource);
+
+  const userDataElem = document.querySelector(".billTotal");
+
+  const costData = {
+    
+  };
+
+  const userDatHTML = userTemplate(userData);
+  userDataElem.innerHTML = userDatHTML;
+});
 
 function textBillTotal() {
   const billTypeEntered = billTypeText.value.trim();
@@ -42,40 +55,6 @@ function textBillTotal() {
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const templateSource = document.querySelector(".userTemplate").innerHTML;
-  
-    const userTemplate = Handlebars.compile(templateSource);
-  
-    const costDataElem = document.querySelector(".billTotal");
-  
-    const costData = {
-      differentCosts : [
-      {  name : "Sall",
-         total :  callsTotal,
-    },
-    {
-        name : "Sms",
-        total : smsTotal
-    },
-    {
-        name : "Total",
-        total : total
-    }
-      ] 
-    };
-
-    
-//   const userDataHTML = userTemplate(userData);
-//   userDataElem.innerHTML = userDataHTML;
-
-
-  
-    const userDataHTML = userTemplate(userData);
-    userDataElem.innerHTML = userDataHTML;
-  });
 }
 
 function removeTotal() {
@@ -89,6 +68,35 @@ function removeTotal() {
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   const templateSource = document.querySelector(".userTemplate").innerHTML;
+
+//   const userTemplate = Handlebars.compile(templateSource);
+
+//   const userDataElem = document.querySelector(".userData");
+
+//   const userData = {
+//     users: [
+//       {
+//         username: "alan",
+//         firstName: "Alan",
+//         lastName: "Johnson",
+//         email: "alan@test.com",
+//       },
+//       {
+//         username: "allison",
+//         firstName: "Allison",
+//         lastName: "House",
+//         email: "allison@test.com",
+//       },
+//       {
+//         username: "ryan",
+//         firstName: "Ryan",
+//         lastName: "Carson",
+//         email: "ryan@test.com",
+//       },
+//     ],
+//   };
 
 //   const userDataHTML = userTemplate(userData);
 //   userDataElem.innerHTML = userDataHTML;

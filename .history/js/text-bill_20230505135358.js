@@ -23,6 +23,24 @@ const totalElem = document.querySelector(".totalOne")
 let callsTotal = 0;
 let smsTotal = 0;
 
+document.addEventListener("DOMContentLoaded", function() {
+
+    const templateSource = document.querySelector(".userTemplate").innerHTML
+
+    const userTemplate = Handlebars.compile(templateSource)
+
+    const userDataElem = document.querySelector(".userData")
+
+    const userData = { users: [
+        {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
+        {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
+        {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
+      ]};
+
+    const userDatHTML = userTemplate(userData)
+    userDataElem.innerHTML = userDatHTML
+})
+
 function textBillTotal() {
 
  
@@ -50,8 +68,11 @@ function textBillTotal() {
 }
 
 function removeTotal() {
-     callsTotal = 0;
-     smsTotal = 0;
+    totalElem.innerHTML = 0
+    callsTotalElem.innerHTML = 0
+    smsTotalElem.innerHTML = 0
+    callsTotal = 0
+    smsTotal = 0
 }
 
 
