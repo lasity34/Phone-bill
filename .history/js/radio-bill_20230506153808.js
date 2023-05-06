@@ -36,7 +36,9 @@ function calculateRadioBtn() {
     }
   }
 
+ 
   billTotal = callTotalRadio + smsTotalRadio;
+
 
   totalTwoElement.classList.remove("danger");
   totalTwoElement.classList.remove("warning");
@@ -46,11 +48,11 @@ function calculateRadioBtn() {
   } else if (totalBill > 20) {
     totalTwoElement.classList.add("warning");
   }
-  updateRadioTemplate();
+  updateTemplate();
 }
 
-function updateRadioTemplate() {
-  const templateSource = document.querySelector("#radioTemplate").innerHTML;
+function updateTemplate() {
+  const templateSource = document.querySelector("#billTemplate").innerHTML;
   const userTemplate = Handlebars.compile(templateSource);
   const radioCostDataElem = document.querySelector(".radioTotals");
   const costData = {
@@ -68,11 +70,12 @@ function updateRadioTemplate() {
   };
 
   const userDataHTML = userTemplate(costData);
+  console.log(userDataHTML)
   radioCostDataElem.innerHTML = userDataHTML;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  updateRadioTemplate();
+  updateTemplate();
 });
 
 radioBillAddBtnElement.addEventListener("click", calculateRadioBtn);

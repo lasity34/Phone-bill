@@ -14,11 +14,11 @@
 const billTypeText = document.querySelector(".billTypeText");
 const textTotalAddBtn = document.querySelector(".addToBillBtn");
 const textTotalRemoveBtn = document.querySelector(".resetBtn");
-const totalElem = document.querySelector(".total");
 
-let callsTotal = 0.0;
-let smsTotal = 0.0;
-let totalRadio = 0.0;
+let callsTotal = 0.00;
+let smsTotal = 0.00;
+let total = 0.00
+
 
 function textBillTotal() {
   const billTypeEntered = billTypeText.value.trim();
@@ -29,48 +29,56 @@ function textBillTotal() {
     smsTotal += 0.75;
   }
 
+  
   total = callsTotal + smsTotal;
+  
 
   if (total > 50) {
     totalElem.classList.add("danger");
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-  updateTextTemplate();
+
+
+  
 }
 
 function removeTotal() {
+  totalElem.innerHTML = 0;
+  callsTotalElem.innerHTML = 0;
+  smsTotalElem.innerHTML = 0;
   callsTotal = 0;
   smsTotal = 0;
-  updateTemplate();
 }
 
-function updateTextTemplate() {
-    const templateSource = document.querySelector("#billTemplate").innerHTML;
-    const radioTemplate = Handlebars.compile(templateSource);
-    const radioCostDataElem = document.querySelector(".textTotals");
+
+document.addEventListener("DOMContentLoaded", function () {
+    const templateSource = document.querySelector(".userTemplate").innerHTML;
+  
+    const userTemplate = Handlebars.compile(templateSource);
+  
+    const costDataElem = document.querySelector(".textTotals");
+  
     const costData = {
-      differentCosts: [
-        { name: "Call", total: callsTotal.toFixed(2) },
-        {
-          name: "Sms",
-          total: smsTotal.toFixed(2),
-        },
-        {
-          name: "",
-          total: totalRadio.toFixed(2),
-        },
-      ],
+      differentCosts : [
+      {  name : "Call",
+         total :  callsTotal.toFixed(2),
+    },
+    {
+        name : "Sms",
+        total : smsTotal.toFixed(2)
+    },
+    {
+        name : "",
+        total : total.toFixed(2)
+    }
+      ] 
     };
   
-    const userDataHTML = radioTemplate(costData);
-    console.log(userDataHTML)
-    radioCostDataElem.innerHTML = userDataHTML;
-  }
-  
-  document.addEventListener("DOMContentLoaded", function () {
-    updateTextTemplate();
+    const userDataHTML = userTemplate(costData);
+    costDataElem.innerHTML = userDataHTML;
   });
 
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);
+

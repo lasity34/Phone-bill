@@ -18,7 +18,7 @@ const totalElem = document.querySelector(".total");
 
 let callsTotal = 0.0;
 let smsTotal = 0.0;
-let totalRadio = 0.0;
+let total = 0.0;
 
 function textBillTotal() {
   const billTypeEntered = billTypeText.value.trim();
@@ -36,7 +36,7 @@ function textBillTotal() {
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-  updateTextTemplate();
+  updateTemplate();
 }
 
 function removeTotal() {
@@ -45,32 +45,25 @@ function removeTotal() {
   updateTemplate();
 }
 
-function updateTextTemplate() {
+function updateTemplate() {
     const templateSource = document.querySelector("#billTemplate").innerHTML;
-    const radioTemplate = Handlebars.compile(templateSource);
+    const userTemplate = Handlebars.compile(templateSource);
     const radioCostDataElem = document.querySelector(".textTotals");
     const costData = {
-      differentCosts: [
-        { name: "Call", total: callsTotal.toFixed(2) },
-        {
-          name: "Sms",
-          total: smsTotal.toFixed(2),
-        },
-        {
-          name: "",
-          total: totalRadio.toFixed(2),
-        },
-      ],
-    };
-  
-    const userDataHTML = radioTemplate(costData);
+        differentCosts: [
+          { name: "Call", total: callsTotal.toFixed(2) },
+          { name: "Sms", total: smsTotal.toFixed(2) },
+          { name: "Overall", total: total.toFixed(2) },
+        ],
+      };
+    const userDataHTML = userTemplate(costData);
     console.log(userDataHTML)
     radioCostDataElem.innerHTML = userDataHTML;
-  }
-  
-  document.addEventListener("DOMContentLoaded", function () {
-    updateTextTemplate();
-  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateTemplate();
+});
 
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);

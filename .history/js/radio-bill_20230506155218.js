@@ -36,7 +36,9 @@ function calculateRadioBtn() {
     }
   }
 
+ 
   billTotal = callTotalRadio + smsTotalRadio;
+
 
   totalTwoElement.classList.remove("danger");
   totalTwoElement.classList.remove("warning");

@@ -36,7 +36,7 @@ function textBillTotal() {
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-  updateTextTemplate();
+  updateTemplate();
 }
 
 function removeTotal() {
@@ -45,7 +45,7 @@ function removeTotal() {
   updateTemplate();
 }
 
-function updateTextTemplate() {
+function updateTemplate() {
     const templateSource = document.querySelector("#billTemplate").innerHTML;
     const radioTemplate = Handlebars.compile(templateSource);
     const radioCostDataElem = document.querySelector(".textTotals");
@@ -69,7 +69,7 @@ function updateTextTemplate() {
   }
   
   document.addEventListener("DOMContentLoaded", function () {
-    updateTextTemplate();
+    updateTemplate();
   });
 
 textTotalAddBtn.addEventListener("click", textBillTotal);

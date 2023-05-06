@@ -18,7 +18,7 @@ const totalElem = document.querySelector(".total");
 
 let callsTotal = 0.0;
 let smsTotal = 0.0;
-let totalRadio = 0.0;
+let total = 0.0;
 
 function textBillTotal() {
   const billTypeEntered = billTypeText.value.trim();
@@ -36,7 +36,7 @@ function textBillTotal() {
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-  updateTextTemplate();
+  updateTemplate();
 }
 
 function removeTotal() {
@@ -45,10 +45,10 @@ function removeTotal() {
   updateTemplate();
 }
 
-function updateTextTemplate() {
-    const templateSource = document.querySelector("#billTemplate").innerHTML;
-    const radioTemplate = Handlebars.compile(templateSource);
-    const radioCostDataElem = document.querySelector(".textTotals");
+function updateTemplate() {
+    const templateSource = document.querySelector("#radioTemplate").innerHTML;
+    const userTemplate = Handlebars.compile(templateSource);
+    const radioCostDataElem = document.querySelector(".radioTotals");
     const costData = {
       differentCosts: [
         { name: "Call", total: callsTotal.toFixed(2) },
@@ -63,13 +63,13 @@ function updateTextTemplate() {
       ],
     };
   
-    const userDataHTML = radioTemplate(costData);
-    console.log(userDataHTML)
+    const userDataHTML = userTemplate(costData);
+    
     radioCostDataElem.innerHTML = userDataHTML;
   }
   
   document.addEventListener("DOMContentLoaded", function () {
-    updateTextTemplate();
+    updateTemplate();
   });
 
 textTotalAddBtn.addEventListener("click", textBillTotal);

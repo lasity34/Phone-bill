@@ -45,7 +45,7 @@ let callValue = 0;
 let smsValue = 0;
 let warningValue = 0;
 let criticalValue = 0;
-let totalBill = 0
+
 
 function updatedSettings() {
   callValue = parseInt(callCostSettingEl.value) || 0 ;

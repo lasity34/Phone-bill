@@ -20,7 +20,7 @@ const totalTwoElement = document.querySelector(".totalTwo");
 
 let smsTotalRadio = 0;
 let callTotalRadio = 0;
-let billTotal = 0;
+let total = 0;
 function calculateRadioBtn() {
   const checkedRadioBtnElement = document.querySelector(
     "input[name='billItemType']:checked"
@@ -36,7 +36,10 @@ function calculateRadioBtn() {
     }
   }
 
-  billTotal = callTotalRadio + smsTotalRadio;
+  smsTotalTwoElement.innerHTML = smsTotalRadio.toFixed(2);
+  callTotalTwoElement.innerHTML = callTotalRadio.toFixed(2);
+  totalBill = callTotalRadio + smsTotalRadio;
+  totalTwoElement.innerHTML = totalBill.toFixed(2);
 
   totalTwoElement.classList.remove("danger");
   totalTwoElement.classList.remove("warning");
@@ -46,33 +49,32 @@ function calculateRadioBtn() {
   } else if (totalBill > 20) {
     totalTwoElement.classList.add("warning");
   }
-  updateRadioTemplate();
 }
 
-function updateRadioTemplate() {
-  const templateSource = document.querySelector("#radioTemplate").innerHTML;
+function updateTemplate() {
+  const templateSource = document.querySelector(".userTemplate").innerHTML;
   const userTemplate = Handlebars.compile(templateSource);
   const radioCostDataElem = document.querySelector(".radioTotals");
   const costData = {
     differentCosts: [
-      { name: "Call", total: callTotalRadio.toFixed(2) },
+      { name: "Call", total: callsTotal.toFixed(2) },
       {
         name: "Sms",
-        total: smsTotalRadio.toFixed(2),
+        total: smsTotal.toFixed(2),
       },
       {
         name: "",
-        total: billTotal.toFixed(2),
+        total: total.toFixed(2),
       },
     ],
   };
 
   const userDataHTML = userTemplate(costData);
-  radioCostDataElem.innerHTML = userDataHTML;
+  costDataElem.innerHTML = userDataHTML;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  updateRadioTemplate();
+    updateTemplate()
 });
 
 radioBillAddBtnElement.addEventListener("click", calculateRadioBtn);

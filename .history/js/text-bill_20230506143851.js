@@ -14,11 +14,10 @@
 const billTypeText = document.querySelector(".billTypeText");
 const textTotalAddBtn = document.querySelector(".addToBillBtn");
 const textTotalRemoveBtn = document.querySelector(".resetBtn");
-const totalElem = document.querySelector(".total");
 
 let callsTotal = 0.0;
 let smsTotal = 0.0;
-let totalRadio = 0.0;
+let total = 0.0;
 
 function textBillTotal() {
   const billTypeEntered = billTypeText.value.trim();
@@ -36,41 +35,39 @@ function textBillTotal() {
   } else if (total > 30) {
     totalElem.classList.add("warning");
   }
-  updateTextTemplate();
+  updateTemplate();
 }
 
 function removeTotal() {
   callsTotal = 0;
   smsTotal = 0;
-  updateTemplate();
 }
 
-function updateTextTemplate() {
-    const templateSource = document.querySelector("#billTemplate").innerHTML;
-    const radioTemplate = Handlebars.compile(templateSource);
-    const radioCostDataElem = document.querySelector(".textTotals");
-    const costData = {
-      differentCosts: [
-        { name: "Call", total: callsTotal.toFixed(2) },
-        {
-          name: "Sms",
-          total: smsTotal.toFixed(2),
-        },
-        {
-          name: "",
-          total: totalRadio.toFixed(2),
-        },
-      ],
-    };
-  
-    const userDataHTML = radioTemplate(costData);
-    console.log(userDataHTML)
-    radioCostDataElem.innerHTML = userDataHTML;
-  }
-  
-  document.addEventListener("DOMContentLoaded", function () {
-    updateTextTemplate();
-  });
+function updateTemplate() {
+  const templateSource = document.querySelector("#userTemplate").innerHTML;
+  const userTemplate = Handlebars.compile(templateSource);
+  const costDataElem = document.querySelector(".textTotals");
+  const costData = {
+    differentCosts: [
+      { name: "Call", total: callsTotal.toFixed(2) },
+      {
+        name: "Sms",
+        total: smsTotal.toFixed(2),
+      },
+      {
+        name: "",
+        total: total.toFixed(2),
+      },
+    ],
+  };
+
+  const userDataHTML = userTemplate(costData);
+  costDataElem.innerHTML = userDataHTML;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateTemplate();
+});
 
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);
