@@ -40,7 +40,7 @@ function calculateRadioBtn() {
 
   updateRadioTemplate();
 
-  const radioItem = document.querySelectorAll(".radioItem");
+  const radioItem = document.querySelectorAll(".textItem");
 
   radioItem[radioItem.length - 1].classList.remove("danger");
   radioItem[radioItem.length - 1].classList.remove("warning");
@@ -59,7 +59,7 @@ function calculateRadioBtn() {
 }
 
 function updateRadioTemplate() {
-  const templateSource = document.querySelector("#radioTemplate").innerHTML;
+  const templateSource = document.querySelector("#billTemplate").innerHTML;
   const userTemplate = Handlebars.compile(templateSource);
   const radioCostDataElem = document.querySelector(".radioTotals");
   const costData = {

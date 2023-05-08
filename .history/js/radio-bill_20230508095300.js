@@ -39,19 +39,16 @@ function calculateRadioBtn() {
   radioTotal = callTotalRadio + smsTotalRadio;
 
   updateRadioTemplate();
+  totalTwoElement.classList.remove("danger");
+  totalTwoElement.classList.remove("warning");
 
-  const radioItem = document.querySelectorAll(".radioItem");
-
-  radioItem[radioItem.length - 1].classList.remove("danger");
-  radioItem[radioItem.length - 1].classList.remove("warning");
-
-  if (radioTotal > 50) {
-    const lastChild = radioItem[radioItem.length - 1];
+  if (totaltext > 50) {
+    const lastChild = textItem[textItem.length - 1];
     if (lastChild) {
       lastChild.classList.add("danger");
     }
-  } else if (radioTotal > 30) {
-    const lastChild = radioItem[radioItem.length - 1];
+  } else if (totaltext > 30) {
+    const lastChild = textItem[textItem.length - 1];
     if (lastChild) {
       lastChild.classList.add("warning");
     }

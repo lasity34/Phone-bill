@@ -42,8 +42,10 @@ function calculateRadioBtn() {
 
   const radioItem = document.querySelectorAll(".radioItem");
 
-  radioItem[radioItem.length - 1].classList.remove("danger");
-  radioItem[radioItem.length - 1].classList.remove("warning");
+  radioItem.classList.remove("danger");
+  radioItem.classList.remove("warning");
+
+
 
   if (radioTotal > 50) {
     const lastChild = radioItem[radioItem.length - 1];

@@ -59,7 +59,7 @@ function calculateRadioBtn() {
 }
 
 function updateRadioTemplate() {
-  const templateSource = document.querySelector("#radioTemplate").innerHTML;
+  const templateSource = document.querySelector("#billTemplate").innerHTML;
   const userTemplate = Handlebars.compile(templateSource);
   const radioCostDataElem = document.querySelector(".radioTotals");
   const costData = {
