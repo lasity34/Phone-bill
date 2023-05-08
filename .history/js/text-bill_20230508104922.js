@@ -33,7 +33,19 @@ function textBillTotal() {
 
   totaltext = callsTotal + smsTotal;
   updateTextTemplate();
+  const textItem = document.querySelectorAll(".textItem");
 
+  if (totaltext > 50) {
+    const lastChild = textItem[textItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("danger");
+    }
+  } else if (totaltext > 30) {
+    const lastChild = textItem[textItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("warning");
+    }
+}
 }
 function removeTotal() {
   callsTotal = 0;
@@ -42,25 +54,23 @@ function removeTotal() {
   updateTextTemplate();
 }
 
-function updateTextTemplate() {
+function updateTextTemplate(type) {
   const templateSource = document.querySelector("#billTemplate").innerHTML;
   const textTemplate = Handlebars.compile(templateSource);
 
   const costData = {
     differentCosts: [
-      { name: "Call", total: callsTotal.toFixed(2), extraClass : "" },
+      { name: "Call", total: callsTotal.toFixed(2) },
       {
         name: "Sms",
         total: smsTotal.toFixed(2),
-        extraClass : "" 
       },
       {
         name: "",
         total: totaltext.toFixed(2),
-        extraClass : totaltext > 50 ? "danger" : totaltext > 30 ? "warning" : ""
       },
     ],
-   
+    type : type
   };
 
   const userDataHTML = textTemplate(costData);
@@ -69,7 +79,7 @@ function updateTextTemplate() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  updateTextTemplate();
+  updateTextTemplate("text");
 });
 
 textTotalAddBtn.addEventListener("click", textBillTotal);

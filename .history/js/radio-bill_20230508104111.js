@@ -42,7 +42,20 @@ function calculateRadioBtn() {
 
   const radioItem = document.querySelectorAll(".radioItem");
 
+  radioItem[radioItem.length - 1].classList.remove("danger");
+  radioItem[radioItem.length - 1].classList.remove("warning");
 
+  if (radioTotal > 50) {
+    const lastChild = radioItem[radioItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("danger");
+    }
+  } else if (radioTotal > 30) {
+    const lastChild = radioItem[radioItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("warning");
+    }
+  }
 }
 
 function updateRadioTemplate(type) {
@@ -51,19 +64,17 @@ function updateRadioTemplate(type) {
   const radioCostDataElem = document.querySelector(".radioTotals");
   const costData = {
     differentCosts: [
-      { name: "Call", total: callTotalRadio.toFixed(2), extraClass : "" },
+      { name: "Call", total: callTotalRadio.toFixed(2) },
       {
         name: "Sms",
         total: smsTotalRadio.toFixed(2),
-        extraClass : ""
       },
       {
         name: "",
         total: radioTotal.toFixed(2),
-        extraClass : radioTotal > 50 ? "danger" : radioTotal > 30 ? "warning" : ''
       },
     ],
-   
+    type: type
   };
 
   const userDataHTML = userTemplate(costData);

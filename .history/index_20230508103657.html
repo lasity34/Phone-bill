@@ -10,11 +10,18 @@
       {{#each differentCosts}}
       <tr >
       <td>{{name}} total</td>
-      <td><span class=" {{this.extraClass}}" >{{total}}</span></td>
+      <td><span class="{{type}}Item">{{total}}</span></td>
       </tr>
       {{/each}}
     </script>
-   
+    <script type="text/x-template" id="radioTemplate">
+      {{#each differentCosts}}
+      <tr>
+      <td>{{name}} total</td>
+      <td><span class="radioItem">{{total}}</span></td>
+      </tr>
+      {{/each}}
+    </script>
   </head>
   <body>
     <div class="container">

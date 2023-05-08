@@ -60,7 +60,7 @@ function updateTextTemplate() {
         extraClass : totaltext > 50 ? "danger" : totaltext > 30 ? "warning" : ""
       },
     ],
-   
+    type : "text"
   };
 
   const userDataHTML = textTemplate(costData);

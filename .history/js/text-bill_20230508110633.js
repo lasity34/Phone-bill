@@ -33,7 +33,19 @@ function textBillTotal() {
 
   totaltext = callsTotal + smsTotal;
   updateTextTemplate();
+  const textItem = document.querySelectorAll(".textItem");
 
+  if (totaltext > 50) {
+    const lastChild = textItem[textItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("danger");
+    }
+  } else if (totaltext > 30) {
+    const lastChild = textItem[textItem.length - 1];
+    if (lastChild) {
+      lastChild.classList.add("warning");
+    }
+}
 }
 function removeTotal() {
   callsTotal = 0;
@@ -57,10 +69,10 @@ function updateTextTemplate() {
       {
         name: "",
         total: totaltext.toFixed(2),
-        extraClass : totaltext > 50 ? "danger" : totaltext > 30 ? "warning" : ""
+        extraClass : "" 
       },
     ],
-   
+    type : "text"
   };
 
   const userDataHTML = textTemplate(costData);

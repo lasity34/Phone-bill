@@ -63,7 +63,7 @@ function updateRadioTemplate(type) {
         extraClass : radioTotal > 50 ? "danger" : radioTotal > 30 ? "warning" : ''
       },
     ],
-   
+    type: type
   };
 
   const userDataHTML = userTemplate(costData);

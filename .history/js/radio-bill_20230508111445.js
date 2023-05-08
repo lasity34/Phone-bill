@@ -60,10 +60,10 @@ function updateRadioTemplate(type) {
       {
         name: "",
         total: radioTotal.toFixed(2),
-        extraClass : radioTotal > 50 ? "danger" : radioTotal > 30 ? "warning" : ''
+        extraClass : radioTotal
       },
     ],
-   
+    type: type
   };
 
   const userDataHTML = userTemplate(costData);

@@ -57,10 +57,10 @@ function updateTextTemplate() {
       {
         name: "",
         total: totaltext.toFixed(2),
-        extraClass : totaltext > 50 ? "danger" : totaltext > 30 ? "warning" : ""
+        extraClass : totaltext > 50 ? "danger" : radioTotal > 30 ? "warning" : ""
       },
     ],
-   
+    type : "text"
   };
 
   const userDataHTML = textTemplate(costData);
