@@ -46,7 +46,7 @@ function textBillTotal() {
       lastChild.classList.add("warning");
     }
 }
-}
+
 function removeTotal() {
   callsTotal = 0;
   smsTotal = 0;

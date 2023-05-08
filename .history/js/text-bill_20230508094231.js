@@ -16,7 +16,7 @@ const textTotalAddBtn = document.querySelector(".addToBillBtn");
 const textTotalRemoveBtn = document.querySelector(".resetBtn");
 const totalElem = document.querySelector(".total");
 const textCostDataElem = document.querySelector(".textTotals");
-
+const textItem = document.querySelector(".textItem")
 
 let callsTotal = 0.0;
 let smsTotal = 0.0;
@@ -33,20 +33,19 @@ function textBillTotal() {
 
   totaltext = callsTotal + smsTotal;
   updateTextTemplate();
-  const textItem = document.querySelectorAll(".textItem");
-
   if (totaltext > 50) {
-    const lastChild = textItem[textItem.length - 1];
+    const lastChild = textItem.lastElementChild;
     if (lastChild) {
       lastChild.classList.add("danger");
     }
   } else if (totaltext > 30) {
-    const lastChild = textItem[textItem.length - 1];
+    const lastChild = textItem.lastElementChild;
     if (lastChild) {
       lastChild.classList.add("warning");
     }
+  }
 }
-}
+
 function removeTotal() {
   callsTotal = 0;
   smsTotal = 0;

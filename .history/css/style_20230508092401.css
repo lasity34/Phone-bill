@@ -7,12 +7,12 @@
 }
 
 
-.warning {
+.warning:last-child {
   color: orange;
   font-weight: bold;
 }
 
-.danger {
+.danger:last-child {
   color: crimson;
   font-weight: bold;
 }

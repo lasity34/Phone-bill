@@ -15,8 +15,6 @@ const billTypeText = document.querySelector(".billTypeText");
 const textTotalAddBtn = document.querySelector(".addToBillBtn");
 const textTotalRemoveBtn = document.querySelector(".resetBtn");
 const totalElem = document.querySelector(".total");
-const textCostDataElem = document.querySelector(".textTotals");
-
 
 let callsTotal = 0.0;
 let smsTotal = 0.0;
@@ -32,21 +30,15 @@ function textBillTotal() {
   }
 
   totaltext = callsTotal + smsTotal;
-  updateTextTemplate();
-  const textItem = document.querySelectorAll(".textItem");
 
   if (totaltext > 50) {
-    const lastChild = textItem[textItem.length - 1];
-    if (lastChild) {
-      lastChild.classList.add("danger");
-    }
+    textCostDataElem.classList.add("danger");
   } else if (totaltext > 30) {
-    const lastChild = textItem[textItem.length - 1];
-    if (lastChild) {
-      lastChild.classList.add("warning");
-    }
+    textCostDataElem.classList.add("warning");
+  }
+  updateTextTemplate();
 }
-}
+
 function removeTotal() {
   callsTotal = 0;
   smsTotal = 0;
@@ -54,31 +46,31 @@ function removeTotal() {
 }
 
 function updateTextTemplate() {
-  const templateSource = document.querySelector("#billTemplate").innerHTML;
-  const textTemplate = Handlebars.compile(templateSource);
-
-  const costData = {
-    differentCosts: [
-      { name: "Call", total: callsTotal.toFixed(2) },
-      {
-        name: "Sms",
-        total: smsTotal.toFixed(2),
-      },
-      {
-        name: "",
-        total: totaltext.toFixed(2),
-      },
-    ],
-  };
-
-  const userDataHTML = textTemplate(costData);
-
-  textCostDataElem.innerHTML = userDataHTML;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  updateTextTemplate();
-});
+    const templateSource = document.querySelector("#billTemplate").innerHTML;
+    const textTemplate = Handlebars.compile(templateSource);
+    const textCostDataElem = document.querySelector(".textTotals");
+    const costData = {
+      differentCosts: [
+        { name: "Call", total: callsTotal.toFixed(2) },
+        {
+          name: "Sms",
+          total: smsTotal.toFixed(2),
+        },
+        {
+          name: "",
+          total: totaltext.toFixed(2),
+        },
+      ],
+    };
+  
+    const userDataHTML = textTemplate(costData);
+   
+    textCostDataElem.innerHTML = userDataHTML;
+  }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    updateTextTemplate();
+  });
 
 textTotalAddBtn.addEventListener("click", textBillTotal);
 textTotalRemoveBtn.addEventListener("click", removeTotal);
